@@ -1,0 +1,121 @@
+body{
+	width: 100%;
+    height: 100%;
+    margin: auto;
+    min-width: 1200px;
+}
+.serverDataDiv{
+	text-align: center;
+    margin-top: 50px;
+}
+.serverDataTxt{
+	width: 20%;
+    height: 34px;
+    font-size: medium;
+    background-color: cornsilk;
+}
+.serverDataBtnDiv{
+	text-align: center;
+	margin: 30px;
+}
+.serverDataBtn{
+	background-color: floralwhite;
+    padding: 5px;
+    font-weight: 600;
+}
+.btncolor{
+	color:blue ;
+}
+.outputDiv{
+	text-align: center;
+    background-color: aliceblue;
+    width: 60%;
+    margin-left: 20%;
+}
+
+/* Version 1.1 Date: 25052016 */
+.dataId{
+	border-top: thick solid black;
+	font-weight: 600;
+}
+.dataHeader{
+	background-color: black;
+}
+.historyBtn{
+	background-color: floralwhite;
+    padding: 5px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+.historyBtnDiv{
+	text-align: center;
+	width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.backlink{
+	margin-bottom: -50px;
+    margin-left: 20%;
+    margin-top: 5px;
+}
+.OnlineDataHeader{
+	text-align: center;
+    color: #000000;
+    height: 80px;
+    font-size: 40px;
+    line-height: 65px;
+    margin-bottom: -25px;
+}
+.OnlineDataDiv{
+	text-align: center;
+    width: 100%;
+    margin: auto;
+    color: #000000;
+    font-size: 16px;
+    max-width: 100%;
+    overflow-x: scroll;
+    height: inherit;
+    overflow-y: auto;
+}
+.HistoryDataDiv{
+	text-align: center;
+    margin: auto;
+    color: #000000;
+    font-size: 16px;
+    /* height: 400px; */
+    max-width: 100%;
+    overflow-x: scroll;
+}
+.Navigation{
+	text-align: center;
+    margin-bottom: 10px;
+}
+.DateDiv{
+	text-align: center;
+    margin-bottom: 10px;
+    float: right;
+    margin-right: 36px;
+    margin-top: -30px;
+    font-size: 18px;
+    
+}
+#idLabelDate{
+	font-weight: 600;
+}
+
+/* .tdIp{
+	text-align: left;
+	width: 20% ;
+}
+.tdTime{
+	text-align: left;
+	width: 20% ;
+}
+.tdBytes{
+	text-align: left;
+	width: 15% ;
+}
+.tdData{
+	text-align: left;
+	
+} */
