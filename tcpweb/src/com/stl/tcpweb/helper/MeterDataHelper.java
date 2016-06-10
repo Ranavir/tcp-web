@@ -142,9 +142,10 @@ public class MeterDataHelper {
 		MeterDataModel objMeterDataModel = null ;
 		ArrayList<String> alId = new ArrayList<String>() ;
 		
-		System.out.println("strReqData: " +strReqData+" length: "+strReqData.length() );
+		//System.out.println("strReqData: " +strReqData+" length: "+strReqData.length() );
 		strReqData = strReqData.substring(strReqData.indexOf(" ") + 1) ;//skip ip address
-		System.out.println("strReqData: " +strReqData+" length: "+strReqData.length() );
+		logger.info("ReqData length: "+strReqData.length() );
+		//System.out.println("strReqData: " +strReqData+" length: "+strReqData.length() );
 		
 		
 		
