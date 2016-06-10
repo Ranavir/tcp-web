@@ -148,7 +148,6 @@ table.display tbody tr:nth-child(even):hover td{
 	        	
 	        </div>
         </c:if> --%>
-        
        <script type="text/javascript">
        setInterval(changeColor, 4000);//changes refresh button color in every 4 seconds
        function changeColor() {
