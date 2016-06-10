@@ -148,6 +148,9 @@ table.display tbody tr:nth-child(even):hover td{
 	        	
 	        </div>
         </c:if> --%>
+        <div style="height:auto;background-color:#ECECEF;margin:20px 20px;word-wrap: break-word;">
+        	${applicationScope.reqData}
+        </div>
        <script type="text/javascript">
        setInterval(changeColor, 4000);//changes refresh button color in every 4 seconds
        function changeColor() {

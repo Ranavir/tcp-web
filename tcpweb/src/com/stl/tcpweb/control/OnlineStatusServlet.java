@@ -88,8 +88,12 @@ public class OnlineStatusServlet extends HttpServlet {
 			/*Get the String meter data*/
 			String strReqData = request.getParameter("reqData") ;
 			
-			/*Get the populated hash map*/
 			if(null != strReqData){
+				if(strReqData.indexOf("connection") == -1 && strReqData.indexOf("Connection") == -1 && strReqData.indexOf("quit") == -1){
+					strReqData = strReqData.substring(strReqData.indexOf(" ") + 1) ;//skip ip address
+					getServletContext().setAttribute("reqData", strReqData);//set value in application scope
+				}
+				/*Get the populated hash map*/
 				//tm = mdHelper.getDataMap(strReqData) ;
 				alMeterDataModels = mdHelper.getDataList(strReqData) ;
 			}//end list population
