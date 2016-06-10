@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="5">
+<!-- <meta http-equiv="refresh" content="5"> -->
 <title>Online status</title>
 
 <link href="./css/styles.css" rel="stylesheet" type="text/css"/>
@@ -148,6 +148,7 @@ table.display tbody tr:nth-child(even):hover td{
 	        	
 	        </div>
         </c:if> --%>
+        
        <script type="text/javascript">
        setInterval(changeColor, 4000);//changes refresh button color in every 4 seconds
        function changeColor() {
