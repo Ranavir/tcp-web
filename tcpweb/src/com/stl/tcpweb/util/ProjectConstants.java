@@ -9,7 +9,7 @@ package com.stl.tcpweb.util;
 public class ProjectConstants {
 		
 	    //server related date:24052016
-		public static final String SERVER_IP = "192.168.0.145" ;
+		public static final String SERVER_IP = "182.156.93.61" ;
 		public static final int SERVER_PORT = 124 ;
 		
 		

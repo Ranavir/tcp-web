@@ -2,7 +2,6 @@ package com.stl.tcpweb.control;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.TimerTask;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -41,7 +40,7 @@ public class AppContextListner implements ServletContextListener {
 		//create scheduler
 		ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
 		//initial delay millisecond error removed
-	    scheduler.scheduleAtFixedRate(new SaveToDBTask(servletContextEvent), ( getIntitialDelayInMillis() - Calendar.getInstance().get(Calendar.MILLISECOND) % 1000 ), MILLISEC_INTERVAL, TimeUnit.MILLISECONDS);
+	    scheduler.schedule(new SaveToDBTask(servletContextEvent), ( getIntitialDelayInMillis() - Calendar.getInstance().get(Calendar.MILLISECOND) % 1000 ), TimeUnit.MILLISECONDS);
 		servletContextEvent.getServletContext().setAttribute("scheduler",scheduler);
 	}
 
@@ -62,8 +61,8 @@ public class AppContextListner implements ServletContextListener {
         
         ldelayinmilli = ((-min + MINUTE_INTERVAL) * 60 * 1000) - (sec * 1000) ;
         
-        //calendar.add(Calendar.MILLISECOND, (int)ldelayinmilli) ;
-        //System.out.println("First Scheduled Time::"+calendar.getTime());
+        calendar.add(Calendar.MILLISECOND, (int)ldelayinmilli) ;
+        System.out.println("Scheduled Time::"+calendar.getTime());
         //System.out.println("Delay in millisecond:"+ldelayinmilli);
 		return ldelayinmilli ;
 	}
@@ -79,7 +78,7 @@ public class AppContextListner implements ServletContextListener {
                 .getServletContext().getAttribute("scheduler");
         scheduler.shutdown();
 	}
-	public class SaveToDBTask extends TimerTask{
+	private class SaveToDBTask implements Runnable{
 		ServletContextEvent servletContextEvent ;
 		private MeterDataService mdService = null ;
 		ArrayList<MeterDataModel> alMeterDataModels ;
@@ -91,13 +90,19 @@ public class AppContextListner implements ServletContextListener {
 		}
 
 		public void run() {
-	        // Implement.
-			//servletContextEvent.getServletContext().setAttribute("scValue","") ;
-			alMeterDataModels = (ArrayList<MeterDataModel>)servletContextEvent.getServletContext().getAttribute("alMeterDataModels") ;
-			if( null != alMeterDataModels && alMeterDataModels.size() > 0 ){
-				mdService.saveMeterData(alMeterDataModels);
-			}
-			System.out.println("SaveToDBTask executed sucessfully...");
+			try{
+				// Implement.
+				//servletContextEvent.getServletContext().setAttribute("scValue","") ;
+				alMeterDataModels = (ArrayList<MeterDataModel>)servletContextEvent.getServletContext().getAttribute("alMeterDataModels") ;
+				if( null != alMeterDataModels && alMeterDataModels.size() > 0 ){
+					mdService.saveMeterData(alMeterDataModels);
+				}
+				System.out.println("SaveToDBTask executed sucessfully...");
+	        }finally{
+	            //Prevent this task from stalling due to RuntimeExceptions.
+	        	((ScheduledExecutorService) servletContextEvent.getServletContext().getAttribute("scheduler")).schedule(new SaveToDBTask(servletContextEvent),( getIntitialDelayInMillis() - Calendar.getInstance().get(Calendar.MILLISECOND) % 1000 ),TimeUnit.MILLISECONDS);
+	        }
+	        
 	    }
 	}
 
